@@ -1,0 +1,61 @@
+<section class="section-pagetop bg-light">
+    <div class="container">
+        <h2 class="title-page">{{ category | uppercase}}</h2>
+    </div>
+    <!-- container //  -->
+</section>
+
+<div class="container">
+    <section class="section-content padding-y">
+        <div class="container">
+            <header class="mb-3">
+                <div class="form-inline">
+                    <strong class="mr-md-auto"></strong>
+                    <select class="mr-2 form-control">
+            <option>Registrados recientemente</option>
+            <option>Más vendido</option>
+            <option>Especiales</option>
+          </select>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-light active" data-toggle="tooltip" title="En Lista">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <a href="#" class="btn btn-light" data-toggle="tooltip" title="En Grilla">
+                            <i class="fa fa-th"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="row">
+                <div class="col-md-3" *ngFor="let item of [1,1,1,1,1,1,1,1]">
+                    <figure class="card card-product-grid">
+                        <div class="img-wrap">
+                            <span class="badge badge-warning"> En Oferta </span>
+                            <!-- <img src="https://dummyimage.com/750x748/a392a3/fff.png"> -->
+                            <img src="./assets/images/photo/photo2.jpg">
+                        </div>
+                        <!-- img-wrap.// -->
+                        <figcaption class="info-wrap">
+                            <div class="price-wrap">
+                                <span class="price h4">S/ 69.99</span>
+                                <small class="text-muted">/ por unidad</small>
+                            </div>
+                            <a href="#" class="title mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Officia distinctio quae praesentium tempore </a>
+                            <!-- price-wrap.// -->
+                            <hr>
+                            <p class="mb-3">
+                                <a href="#" class="badge badge-info">Tortas</a>
+                                <a href="#" class="badge badge-info">Repostería</a>
+                            </p>
+                            <a href="#" class="btn btn-block btn-success"> <i class="fas fa-cart-plus"></i> Agregar </a>
+                        </figcaption>
+                    </figure>
+                </div>
+                <!-- col.// -->
+
+            </div>
+        </div>
+    </section>
+</div>

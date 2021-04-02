@@ -1,0 +1,9 @@
+.nav-item a,
+.cursor-pointer {
+    cursor: pointer;
+}
+
+a,
+a:hover {
+    color: #000000;
+}
