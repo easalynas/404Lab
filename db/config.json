@@ -1,0 +1,7 @@
+{
+    "endpoint": "upc404.ci7xrsqtmjaw.sa-east-1.rds.amazonaws.com",
+    "user": "upc404",
+    "password": "upc404lab",
+    "dbname": "upc",
+    "client": "mysql"
+}
