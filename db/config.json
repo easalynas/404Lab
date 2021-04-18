@@ -1,7 +1,16 @@
-{
-    "endpoint": "upc404.ci7xrsqtmjaw.sa-east-1.rds.amazonaws.com",
-    "user": "upc404",
-    "password": "upc404lab",
-    "dbname": "upc",
-    "client": "mysql"
-}
+[
+    {
+        "endpoint": "upc404.ci7xrsqtmjaw.sa-east-1.rds.amazonaws.com",
+        "user": "admin",
+        "password": "upc404lab",
+        "dbname": "upc",
+        "client": "mysql"
+    },
+    {
+        "endpoint": "upcmss.ci7xrsqtmjaw.sa-east-1.rds.amazonaws.com",
+        "user": "admin",
+        "password": "upcmss2021",
+        "dbname": "upc",
+        "client": "sqlserver"
+    }
+]
