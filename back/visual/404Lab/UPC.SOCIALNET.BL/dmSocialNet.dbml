@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="upc" Class="dmSocialNetDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=upcmss.ci7xrsqtmjaw.sa-east-1.rds.amazonaws.com;Initial Catalog=upc;Persist Security Info=True;User ID=admin" SettingsObjectName="UPC.SOCIALNET.BL.Properties.Settings" SettingsPropertyName="upcConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Persona" Member="Persona">
+    <Type Name="Persona">
+      <Column Name="IdPersona" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Apemat" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Apepat" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Alias" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="Doctip" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Docnro" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="Fecnac" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Img" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Created" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="Usucod" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Codigo" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Usuario" Member="Usuario1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Pass" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Passold" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Permiso" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdPersona" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
