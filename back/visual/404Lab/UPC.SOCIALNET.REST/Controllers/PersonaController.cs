@@ -40,17 +40,23 @@ namespace UPC.SOCIALNET.REST.Controllers
                       };
             return Ok(res);
         }
+
         [HttpPost]
         public IHttpActionResult Registrar([FromBody]Persona objPersona)
         {
             return Ok(objPersonaBL.Registrar(objPersona));
         }
-        [HttpPost]
+        [HttpPut]
         public IHttpActionResult Actualizar([FromBody] Persona objPersona)
         {
             return Ok(objPersonaBL.Actualizar(objPersona));
         }
-        [HttpPost]
+        /*
+        public IHttpActionResult Post([FromBody] Persona objPersona)
+        {
+            return Ok(objPersonaBL.Actualizar(objPersona));
+        }*/
+        [HttpDelete]
         public IHttpActionResult Eliminar(int Id)
         {
             return Ok(objPersonaBL.Eliminar(Id));
