@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>App Universidad - Registrate</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+</head>
+
+<body class="color-theme-lightblue">
+    <div class="main-wrap overflow-md-hidden">
+        <div class="nav-header shadow-none border-0">
+            <div class="nav-top w-100">
+                <a href="#"><i class="fa fa-globe text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">App Univ. </span> </a>
+                <a routerLink="/login" class="header-btn d-none d-lg-block bg-dark fw-500 text-white font-xsss p-3 ms-auto w100 text-center lh-20 rounded-xl">Ingresar</a>
+                <a routerLink="/register" class="header-btn d-none d-lg-block bg-current fw-500 text-white font-xsss p-3 ms-2 w100 text-center lh-20 rounded-xl">Registrate</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat" style="background-image: url(assets/images/bg-register.jpg);"></div>
+            <div class="col-xl-6   vh-md-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
+                <div class="card shadow-none border-0 ms-auto me-auto login-card">
+                    <div class="card-body rounded-0 text-left">
+                        <h2 class="fw-700 display1-size display2-md-size mb-3 ">Nueva Cuenta</h2>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <div class="form-group icon-input mb-1">
+                                        <i class="fa fa-user font-sm text-grey-500 pe-0" aria-hidden="true"></i>
+                                        <input type="text" class="ps-5 form-control text-grey-900 font-xsss " placeholder="Ap. Paterno">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <div class="form-group icon-input mb-1">
+                                        <i class="fa fa-user font-sm text-grey-500 pe-0" aria-hidden="true"></i>
+                                        <input type="text" class="ps-5 form-control text-grey-900 font-xsss " placeholder="Ap. Materno">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group icon-input mb-2">
+                                <i class="fa fa-user font-sm text-grey-500 pe-0" aria-hidden="true"></i>
+                                <input type="text" class=" ps-5 form-control text-grey-900 font-xsss" placeholder="Nombres">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <div class="form-group icon-input mb-2">
+                                        <input type="text" class=" ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Alias">
+                                        <i class="far fa-user font-sm text-grey-500 pe-0"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <div class="form-group icon-input mb-2">
+                                        <select class="form-control ">
+                                            <option value="">--- Sexo --</option>
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group icon-input mb-2">
+                                <input type="text" class=" ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Correo Electrónico">
+                                <i class="fa fa-envelope font-sm text-grey-500 pe-0" aria-hidden="true"></i>
+                            </div>
+                            <div class="form-group icon-input mb-2">
+                                <input type="password" class=" ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Contraseña">
+                                <i class="fas fa-key font-sm text-grey-500 pe-0" aria-hidden="true"></i>
+                            </div>
+                            <div class="form-group icon-input mb-2">
+                                <input type="password" class=" ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Confirmar Contraseña">
+                                <i class="fas fa-key font-sm text-grey-500 pe-0" aria-hidden="true"></i>
+                            </div>
+                        </form>
+                        <div class="col-sm-12 p-0 text-left mt-2">
+                            <div class="form-group mb-1"><button (click)="registrar()" class="form-control text-center  text-white fw-600 bg-primary border-0 p-0 ">Registrarme</button></div>
+                            <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">¿Ya tienes una cuenta? <a routerLink="/login" class="fw-700 ms-1">Iniciar Sesión</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
