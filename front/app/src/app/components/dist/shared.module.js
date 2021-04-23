@@ -11,6 +11,8 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var header_component_1 = require("./shared/header/header.component");
 var sidebar_component_1 = require("./shared/sidebar/sidebar.component");
+var app_routing_module_1 = require("../app-routing.module");
+var info_user_component_1 = require("./info-user/info-user.component");
 var SharedModule = /** @class */ (function () {
     function SharedModule() {
     }
@@ -18,14 +20,17 @@ var SharedModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 header_component_1.HeaderComponent,
-                sidebar_component_1.SidebarComponent
+                sidebar_component_1.SidebarComponent,
+                info_user_component_1.InfoUserComponent,
             ],
             imports: [
-                common_1.CommonModule
+                common_1.CommonModule,
+                app_routing_module_1.AppRoutingModule,
             ],
             exports: [
                 header_component_1.HeaderComponent,
-                sidebar_component_1.SidebarComponent
+                sidebar_component_1.SidebarComponent,
+                info_user_component_1.InfoUserComponent
             ]
         })
     ], SharedModule);

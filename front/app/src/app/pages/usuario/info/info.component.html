@@ -1,0 +1,19 @@
+<app-info-user></app-info-user>
+<div class="col-xl-12 col-xxl-12 col-lg-12">
+    <div class="card w-100 border-0 bg-white shadow-xs mb-4 ps-4 pt-4 pe-4 pb-3 mb-3 mt-3 ">
+        <div class="card-body p-lg-3 p-4 w-100 border-0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="mb-4 font-xxl fw-700 mont-font mb-lg-5 mb-4 font-md-xs">Opciones</h4>
+                    <div class="nav-caption fw-600 font-xssss text-grey-500 mb-2">Genaral</div>
+                    <ul class="list-inline mb-4">
+                        <li class="list-inline-item d-block border-bottom me-0"><a routerLink="/user/edit" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-gold-gradiant text-white feather-edit font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Editar información</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
+                        <li class="list-inline-item d-block border-bottom me-0"><a routerLink="/user/aptitud" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-check-circle font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Apitudes</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
+                        <li class="list-inline-item d-block border-bottom me-0"><a routerLink="/user/password" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-blue-gradiant text-white feather-lock font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Cambiar contraseña</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
+                        <li class="list-inline-item d-block border-bottom me-0"><a (click)="eliminarCuenta()" class="pt-2 pb-2 d-flex align-items-center pointer"><i class="btn-round-md bg-red-gradiant text-white feather-trash font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Eliminar cuenta</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

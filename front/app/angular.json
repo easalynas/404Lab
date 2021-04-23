@@ -28,7 +28,10 @@
                             "src/assets/css/style.css",
                             "src/assets/css/feather.css"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/jquery/dist/jquery.min.js",
+                            "src/assets/js/general.js"
+                        ]
                     },
                     "configurations": {
                         "production": {

@@ -14,8 +14,11 @@ var home_component_1 = require("./pages/home/home.component");
 var pages_component_1 = require("./pages/pages.component");
 var aptitud_component_1 = require("./pages/usuario/aptitud/aptitud.component");
 var editar_component_1 = require("./pages/usuario/editar/editar.component");
+var info_component_1 = require("./pages/usuario/info/info.component");
 var register_component_1 = require("./register/register.component");
 var routes = [
+    { path: 'login', component: login_component_1.LoginComponent },
+    { path: 'register', component: register_component_1.RegisterComponent },
     {
         path: '',
         component: pages_component_1.PagesComponent,
@@ -34,18 +37,25 @@ var routes = [
                     {
                         path: 'aptitud',
                         component: aptitud_component_1.AptitudComponent
+                    },
+                    {
+                        path: 'info',
+                        component: info_component_1.InfoComponent
+                    },
+                    {
+                        path: '**',
+                        redirectTo: 'info',
+                        pathMatch: 'full'
                     }
                 ]
             },
             {
-                path: '',
-                redirectTo: '/home',
+                path: '**',
+                redirectTo: 'home',
                 pathMatch: 'full'
             }
         ]
-    },
-    { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'register', component: register_component_1.RegisterComponent },
+    }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

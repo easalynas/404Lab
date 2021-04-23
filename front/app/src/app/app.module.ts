@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AptitudComponent } from './pages/usuario/aptitud/aptitud.component';
 import { EditarComponent } from './pages/usuario/editar/editar.component';
 import { SharedModule } from './components/shared.module';
+import { InfoComponent } from './pages/usuario/info/info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { SharedModule } from './components/shared.module';
     HomeComponent,
     AptitudComponent,
     EditarComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,

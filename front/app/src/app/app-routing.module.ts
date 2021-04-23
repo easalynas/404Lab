@@ -5,9 +5,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { PagesComponent } from './pages/pages.component';
 import { AptitudComponent } from './pages/usuario/aptitud/aptitud.component';
 import { EditarComponent } from './pages/usuario/editar/editar.component';
+import { InfoComponent } from './pages/usuario/info/info.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
     path: '',
     component: PagesComponent,
@@ -26,18 +29,25 @@ const routes: Routes = [
           {
             path :'aptitud',
             component: AptitudComponent
+          },
+          {
+            path : 'info',
+            component:InfoComponent
+          },
+          {
+            path : '**',
+            redirectTo : 'info',
+            pathMatch : 'full'
           }
-        ]
+        ],
       },
       {
-        path : '',
-        redirectTo : '/home',
+        path : '**',
+        redirectTo : 'home',
         pathMatch : 'full'
       }
     ]
-  },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  }
 ];
 
 @NgModule({
