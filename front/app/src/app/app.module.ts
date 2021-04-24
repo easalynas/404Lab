@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +14,11 @@ import { AptitudComponent } from './pages/usuario/aptitud/aptitud.component';
 import { EditarComponent } from './pages/usuario/editar/editar.component';
 import { SharedModule } from './components/shared.module';
 import { InfoComponent } from './pages/usuario/info/info.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +34,12 @@ import { InfoComponent } from './pages/usuario/info/info.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    BrowserAnimationsModule,
+
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

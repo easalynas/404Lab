@@ -19,6 +19,10 @@ var home_component_1 = require("./pages/home/home.component");
 var aptitud_component_1 = require("./pages/usuario/aptitud/aptitud.component");
 var editar_component_1 = require("./pages/usuario/editar/editar.component");
 var shared_module_1 = require("./components/shared.module");
+var info_component_1 = require("./pages/usuario/info/info.component");
+var forms_1 = require("@angular/forms");
+var animations_1 = require("@angular/platform-browser/animations");
+var snack_bar_1 = require("@angular/material/snack-bar");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -32,12 +36,17 @@ var AppModule = /** @class */ (function () {
                 home_component_1.HomeComponent,
                 aptitud_component_1.AptitudComponent,
                 editar_component_1.EditarComponent,
+                info_component_1.InfoComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpClientModule,
-                shared_module_1.SharedModule
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
+                shared_module_1.SharedModule,
+                animations_1.BrowserAnimationsModule,
+                snack_bar_1.MatSnackBarModule,
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

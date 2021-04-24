@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "http://18.230.74.149/deploy",
+        "changeOrigin": true,
+        "secure": false
+    }
+}
