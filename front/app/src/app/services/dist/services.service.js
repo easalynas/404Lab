@@ -18,8 +18,17 @@ var ServicesService = /** @class */ (function () {
         this.http = http;
     }
     ServicesService.prototype.getQuery = function (query, respType) {
-        query = apiUrl + "/" + query;
-        var headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
+        //query = `${apiUrl}/${query}`;
+        query = "/" + query;
+        // let headers = new HttpHeaders({
+        //   'Content-Type': 'application/json'
+        // });
+        var headers = new http_1.HttpHeaders({
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Content-Type': 'application/json'
+        });
         if (!respType) {
             respType = 'json';
         }
@@ -28,11 +37,19 @@ var ServicesService = /** @class */ (function () {
     };
     ServicesService.prototype.postQuery = function (body, file, respType) {
         var headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
+        // let headers = new HttpHeaders({
+        //   'Access-Control-Allow-Origin': '*',
+        //   'Access-Control-Allow-Headers': 'Content-Type',
+        //   'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        //   'Content-Type': 'application/json'
+        // });
         // responseType: 'arraybuffer' | 'blob' | 'json' | 'text'
         if (!respType) {
             respType = 'json';
         }
-        var url = apiUrl + "/" + file;
+        //const url = `${apiUrl}/${file}`;
+        var url = "/api/" + file;
+        //const url = `${file}`;
         return this.http.post(url, body, { headers: headers, responseType: respType })
             .pipe(operators_1.tap(function (data) { return data; }), operators_1.catchError(this.handleError));
     };
