@@ -6,7 +6,8 @@ exports.__esModule = true;
 exports.environment = void 0;
 exports.environment = {
     production: false,
-    apiEndPoint: 'http://18.230.74.149/deploy/api'
+    apiEndPoint: 'http://18.230.74.149/deploy/api',
+    apiEndPointAppSocial: 'https://appuniversidadsocial-default-rtdb.firebaseio.com'
 };
 /*
  * For easier debugging in development mode, you can import the following file

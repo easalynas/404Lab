@@ -16,6 +16,7 @@ var aptitud_component_1 = require("./pages/usuario/aptitud/aptitud.component");
 var editar_component_1 = require("./pages/usuario/editar/editar.component");
 var info_component_1 = require("./pages/usuario/info/info.component");
 var register_component_1 = require("./register/register.component");
+var auth_guard_1 = require("./services/auth.guard");
 var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
@@ -25,7 +26,8 @@ var routes = [
         children: [
             {
                 path: 'home',
-                component: home_component_1.HomeComponent
+                component: home_component_1.HomeComponent,
+                canActivate: [auth_guard_1.AuthGuard]
             },
             {
                 path: 'user',
@@ -47,7 +49,8 @@ var routes = [
                         redirectTo: 'info',
                         pathMatch: 'full'
                     }
-                ]
+                ],
+                canActivate: [auth_guard_1.AuthGuard]
             },
             {
                 path: '**',

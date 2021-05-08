@@ -1,11 +1,13 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { delay, map, tap, retry, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { delay, map, tap, retry, catchError, filter, withLatestFrom } from 'rxjs/operators';
+import { of, throwError, Observable } from 'rxjs';
+import { IUsuario } from '../interfaces/usuario-interface';
 
 
 const apiUrl = environment.apiEndPoint;
+const apiUrlFirebase = environment.apiEndPointAppSocial;
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +22,6 @@ export class ServicesService {
   public getQuery<T>(query, respType?: any) {
     //query = `${apiUrl}/${query}`;
     query = `/${query}`;
-
-    // let headers = new HttpHeaders({
-    //   'Content-Type': 'application/json'
-    // });
 
     let headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -44,19 +42,11 @@ export class ServicesService {
   }
   public postQuery<T>(body, file, respType?: any) {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    // let headers = new HttpHeaders({
-    //   'Access-Control-Allow-Origin': '*',
-    //   'Access-Control-Allow-Headers': 'Content-Type',
-    //   'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    //   'Content-Type': 'application/json'
-    // });
-    // responseType: 'arraybuffer' | 'blob' | 'json' | 'text'
     if (!respType) {
       respType = 'json';
     }
     //const url = `${apiUrl}/${file}`;
     const url = `/api/${file}`;
-    //const url = `${file}`;
     return this.http.post<T>(url, body, { headers, responseType: respType })
       .pipe(
         tap((data: any) => data),
@@ -73,5 +63,9 @@ export class ServicesService {
     return throwError(`Algo malo ha sucedido. Por favor inténtelo más tarde (error: ${error.status})`);
   }
 
+
+  
+  
+  
 
 }

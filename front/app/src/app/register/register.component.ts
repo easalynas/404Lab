@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IUsuarioRegistro } from '../interfaces/interface-usuario';
+import { Router } from '@angular/router';
+import { IUsuarioRegistro, IUsuario } from '../interfaces/usuario-interface';
 import { ServicesService } from '../services/services.service';
 import { UsuarioService } from '../services/usuario.service';
 import { ValidadoresService } from '../services/validadores.service';
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private validadores: ValidadoresService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private router: Router,
   ) {
     this.iniciarFormulario();
   }
@@ -39,7 +41,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  registrar() {
+  async registrar() {
     if (this.formulario.invalid) {
       this.validadores._snackBar('Verifique los campos obligatorios', 'error');
       this.validadores.markFormGroupTouched(this.formulario);
@@ -54,11 +56,24 @@ export class RegisterComponent implements OnInit {
       Password: this.formulario.get('passw1').value,
       Sexo: this.formulario.get('sexo').value,
     };
-    this.usuarioService.registrar(data).toPromise()
-    .then((resp) => {
-      console.log('success : ' , resp);
-    })
-    .catch((error) =>  console.log('error___', error))
+     await this.usuarioService.registrar(data).toPromise()
+       .then((resp) => {
+         console.log('success : ', resp);
+       })
+       .catch((error) => console.log('error___', error));
+
+    const usuario: IUsuario = {
+      alias: this.formulario.get('alias').value,
+      apePaterno: this.formulario.get('apPaterno').value,
+      apeMaterno: this.formulario.get('apMaterno').value,
+      correo: this.formulario.get('correo').value,
+      nombres: this.formulario.get('nombre').value,
+      password: this.formulario.get('passw1').value,
+      sexo: this.formulario.get('sexo').value
+    };
+    await this.usuarioService.registrarFirebase(usuario).toPromise().then();
+    this.validadores._snackBar('En buena hora se ha registrado! Es momento de iniciar');
+    this.router.navigate(['/login']);
   }
 
   get validarCampos() {

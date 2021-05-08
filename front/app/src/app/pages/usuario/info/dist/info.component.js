@@ -9,9 +9,19 @@ exports.__esModule = true;
 exports.InfoComponent = void 0;
 var core_1 = require("@angular/core");
 var InfoComponent = /** @class */ (function () {
-    function InfoComponent() {
+    function InfoComponent(service, usuarioService) {
+        this.service = service;
+        this.usuarioService = usuarioService;
+        this.data = JSON.parse(localStorage.getItem('userData'));
     }
     InfoComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // console.log('data___' , this.data);
+        this.usuarioService.getUsuarioFirebase(this.data.key).toPromise()
+            .then(function (resp) {
+            console.log(' subscripción ... ', resp);
+            _this.usuarioInfo = resp;
+        });
     };
     InfoComponent.prototype.eliminarCuenta = function () {
     };

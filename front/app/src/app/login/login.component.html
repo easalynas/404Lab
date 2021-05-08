@@ -24,13 +24,13 @@
                 <div class="card shadow-none border-0 ms-auto me-auto login-card">
                     <div class="card-body rounded-0 text-left">
                         <h2 class="fw-700 display1-size display2-md-size mb-3 ">Inicio de Sesión</h2>
-                        <form>
+                        <form [formGroup]="fg">
                             <div class="form-group icon-input mb-2">
-                                <input type="text" class=" ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Correo Electrónico">
+                                <input type="text" [class.is-invalid]="validarCampos('correo')" formControlName="correo" class=" ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Correo Electrónico">
                                 <i class="fa fa-envelope font-sm text-grey-500 pe-0" aria-hidden="true"></i>
                             </div>
                             <div class="form-group icon-input mb-2">
-                                <input type="password" class=" ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Contraseña">
+                                <input type="password" [class.is-invalid]="validarCampos('password')" formControlName="password" class=" ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Contraseña">
                                 <i class="fas fa-key font-sm text-grey-500 pe-0" aria-hidden="true"></i>
                             </div>
                         </form>

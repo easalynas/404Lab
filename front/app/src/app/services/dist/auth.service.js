@@ -42,68 +42,103 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.LoginComponent = void 0;
+exports.AuthService = void 0;
 var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var LoginComponent = /** @class */ (function () {
-    function LoginComponent(router, form, validadores, authService, service) {
-        this.router = router;
-        this.form = form;
-        this.validadores = validadores;
-        this.authService = authService;
+var operators_1 = require("rxjs/operators");
+var environment_prod_1 = require("../../environments/environment.prod");
+var apiUrlFirebase = environment_prod_1.environment.apiEndPointAppSocial;
+var AuthService = /** @class */ (function () {
+    function AuthService(service, http) {
         this.service = service;
-        this.iniciarFormulario();
+        this.http = http;
+        this.leerToken();
     }
-    LoginComponent.prototype.ngOnInit = function () {
-    };
-    LoginComponent.prototype.iniciarFormulario = function () {
-        this.fg = this.form.group({
-            correo: ['', [forms_1.Validators.required, forms_1.Validators.pattern('[a-zA-A0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$')]],
-            password: ['', [forms_1.Validators.required]]
+    AuthService.prototype.usuarioLogin = function (correo, password) {
+        return __awaiter(this, void 0, Promise, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.http.get(apiUrlFirebase + "/usuarios.json").pipe(operators_1.map(function (data) { return _this.buscarUsuario(data, correo, password); }))];
+            });
         });
     };
-    LoginComponent.prototype.entrar = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var user;
+    AuthService.prototype.buscarUsuario = function (data, correo, password) {
+        var objUsuario = null;
+        if (data === null) {
+            return null;
+        }
+        Object.keys(data).forEach(function (key) {
+            var usuario = data[key];
+            if (usuario.correo === correo && usuario.password === password) {
+                objUsuario = usuario;
+                objUsuario.key = key;
+            }
+        });
+        return objUsuario;
+    };
+    AuthService.prototype.entrar = function (correo, password) {
+        return __awaiter(this, void 0, Promise, function () {
+            var usuario;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        if (this.fg.invalid) {
-                            this.validadores.markFormGroupTouched(this.fg);
-                            this.validadores._snackBar("Verifique los campos requeridos");
-                            return [2 /*return*/];
-                        }
-                        return [4 /*yield*/, this.authService.entrar(this.fg.get('correo').value, this.fg.get('password').value)];
-                    case 1:
-                        user = _a.sent();
-                        if (user) {
-                            this.router.navigate(['/home']);
+                    case 0: return [4 /*yield*/, this.usuarioLogin(correo, password)];
+                    case 1: return [4 /*yield*/, (_a.sent()).toPromise().then()];
+                    case 2:
+                        usuario = _a.sent();
+                        if (usuario) {
+                            this.guardarStorage(usuario);
+                            return [2 /*return*/, true];
                         }
                         else {
-                            this.validadores._snackBar("El correo y/o la contrase\u00F1a no existen");
+                            return [2 /*return*/, false];
                         }
                         return [2 /*return*/];
                 }
             });
         });
     };
-    Object.defineProperty(LoginComponent.prototype, "validarCampos", {
-        get: function () {
-            var _this = this;
-            return function (campo) {
-                return _this.fg.get(campo).invalid && _this.fg.get(campo).touched;
-            };
-        },
-        enumerable: false,
-        configurable: true
-    });
-    LoginComponent = __decorate([
-        core_1.Component({
-            selector: 'app-login',
-            templateUrl: './login.component.html',
-            styleUrls: ['./login.component.css']
+    // guardarStorage(data: IUsuarioStorage) {
+    AuthService.prototype.guardarStorage = function (data) {
+        this.userData = data;
+        localStorage.setItem('userData', JSON.stringify(data));
+        var hoy = new Date();
+        hoy.setSeconds(3600); // Expira en 1h
+        localStorage.setItem('expira', hoy.getTime().toString());
+    };
+    AuthService.prototype.leerToken = function () {
+        if (localStorage.getItem('userData')) {
+            this.userData = JSON.parse(localStorage.getItem('userData'));
+        }
+        else {
+            this.userData = null;
+        }
+        // console.log('validando...');
+        return this.userData;
+    };
+    AuthService.prototype.esAutenticado = function () {
+        // if (this.userData.length < 2) {
+        if (!this.userData) {
+            return false;
+        }
+        var expira = Number(localStorage.getItem('expira'));
+        var expiraDate = new Date();
+        expiraDate.setTime(expira);
+        console.log('exp1', expira);
+        console.log('exp2', new Date().getTime());
+        if (expiraDate > new Date()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    AuthService.prototype.salir = function () {
+        localStorage.removeItem('userData');
+    };
+    AuthService = __decorate([
+        core_1.Injectable({
+            providedIn: 'root'
         })
-    ], LoginComponent);
-    return LoginComponent;
+    ], AuthService);
+    return AuthService;
 }());
-exports.LoginComponent = LoginComponent;
+exports.AuthService = AuthService;

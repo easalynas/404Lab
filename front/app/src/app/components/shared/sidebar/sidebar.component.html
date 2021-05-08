@@ -8,14 +8,9 @@
                 <ul class="mb-1 top-content">
                     <li class="logo d-none d-xl-block d-lg-block"></li>
                     <li>
-                        <a href="#" class="nav-content-bttn open-font"><i
-                                class="fa fa-university btn-round-md bg-blue-gradiant me-3" aria-hidden="true"></i>
-                            <span>Universidades</span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-content-bttn open-font"><i
-                                class="fas fa-users btn-round-md bg-red-gradiant me-3"></i>
-                            <span>Grupos</span></a>
+                        <a routerLink="/home" class="nav-content-bttn open-font"><i
+                                class="fas fa-home btn-round-md bg-red-gradiant me-3"></i>
+                            <span>Principal</span></a>
                     </li>
                 </ul>
             </div>
@@ -33,9 +28,10 @@
                     </li>
 
                     <li>
-                        <a routerLink="/login" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i
+                        <a class="nav-content-bttn open-font h-auto pt-2 pb-2 cursor-pointer" (click)="salir()"><i
                                 class="fas fa-sign-out-alt font-sm me-3 text-grey-500"></i>
-                            <span>Salir</span></a>
+                            <span>Salir</span>
+                        </a>
                     </li>
                 </ul>
             </div>

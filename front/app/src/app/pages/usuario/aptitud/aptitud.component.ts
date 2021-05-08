@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-aptitud',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AptitudComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: AuthService,
+  ) { }
 
   ngOnInit(): void {
   }

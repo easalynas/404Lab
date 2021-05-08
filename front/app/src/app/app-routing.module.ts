@@ -7,6 +7,7 @@ import { AptitudComponent } from './pages/usuario/aptitud/aptitud.component';
 import { EditarComponent } from './pages/usuario/editar/editar.component';
 import { InfoComponent } from './pages/usuario/info/info.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,34 +18,39 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate:[AuthGuard]
       },
       {
-        path : 'user',
-        children:[
+        path: 'user',
+        children: [
           {
-            path : 'edit',
-            component : EditarComponent
+            path: 'edit',
+            component: EditarComponent,
+            canActivate:[AuthGuard]
           },
           {
-            path :'aptitud',
-            component: AptitudComponent
+            path: 'aptitud',
+            component: AptitudComponent,
+            canActivate:[AuthGuard]
           },
           {
-            path : 'info',
-            component:InfoComponent
+            path: 'info',
+            component: InfoComponent,
+            canActivate:[AuthGuard]
           },
           {
-            path : '**',
-            redirectTo : 'info',
-            pathMatch : 'full'
+            path: '**',
+            redirectTo: 'info',
+            pathMatch: 'full'
           }
         ],
+        canActivate:[AuthGuard]
       },
       {
-        path : '**',
-        redirectTo : 'home',
-        pathMatch : 'full'
+        path: '**',
+        redirectTo: 'home',
+        pathMatch: 'full',
       }
     ]
   }

@@ -13,6 +13,7 @@ var environment_1 = require("src/environments/environment");
 var operators_1 = require("rxjs/operators");
 var rxjs_1 = require("rxjs");
 var apiUrl = environment_1.environment.apiEndPoint;
+var apiUrlFirebase = environment_1.environment.apiEndPointAppSocial;
 var ServicesService = /** @class */ (function () {
     function ServicesService(http) {
         this.http = http;
@@ -20,9 +21,6 @@ var ServicesService = /** @class */ (function () {
     ServicesService.prototype.getQuery = function (query, respType) {
         //query = `${apiUrl}/${query}`;
         query = "/" + query;
-        // let headers = new HttpHeaders({
-        //   'Content-Type': 'application/json'
-        // });
         var headers = new http_1.HttpHeaders({
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Content-Type',
@@ -37,19 +35,11 @@ var ServicesService = /** @class */ (function () {
     };
     ServicesService.prototype.postQuery = function (body, file, respType) {
         var headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
-        // let headers = new HttpHeaders({
-        //   'Access-Control-Allow-Origin': '*',
-        //   'Access-Control-Allow-Headers': 'Content-Type',
-        //   'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        //   'Content-Type': 'application/json'
-        // });
-        // responseType: 'arraybuffer' | 'blob' | 'json' | 'text'
         if (!respType) {
             respType = 'json';
         }
         //const url = `${apiUrl}/${file}`;
         var url = "/api/" + file;
-        //const url = `${file}`;
         return this.http.post(url, body, { headers: headers, responseType: respType })
             .pipe(operators_1.tap(function (data) { return data; }), operators_1.catchError(this.handleError));
     };

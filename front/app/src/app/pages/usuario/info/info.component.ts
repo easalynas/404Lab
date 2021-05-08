@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
+import { UsuarioService } from '../../../services/usuario.service';
+import { IUsuario } from '../../../interfaces/usuario-interface';
 
 @Component({
   selector: 'app-info',
@@ -6,15 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-
+  data:IUsuario;
+  usuarioInfo : IUsuario;
+  constructor(
+    private service: AuthService,
+    private usuarioService:UsuarioService
+  ) {
+      this.data = JSON.parse(localStorage.getItem('userData'));
   }
 
-  eliminarCuenta(){
-    
+  ngOnInit(): void {
+    // console.log('data___' , this.data);
+    this.usuarioService.getUsuarioFirebase(this.data.key).toPromise()
+    .then(
+      (resp : IUsuario) => {
+        console.log(' subscripción ... ' , resp);
+        this.usuarioInfo = resp;
+      }
+    );
+  }
+
+  eliminarCuenta() {
+
   }
 
 }
