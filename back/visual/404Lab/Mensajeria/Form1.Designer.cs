@@ -31,13 +31,13 @@ namespace Mensajeria
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtResultado = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(125, 230);
+            this.button1.Location = new System.Drawing.Point(125, 157);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(234, 23);
             this.button1.TabIndex = 0;
@@ -47,21 +47,21 @@ namespace Mensajeria
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(490, 230);
+            this.button2.Location = new System.Drawing.Point(125, 216);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(202, 23);
+            this.button2.Size = new System.Drawing.Size(234, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Ver Comentarios";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
+            // textBox2
             // 
-            this.textBox1.Location = new System.Drawing.Point(490, 98);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 23);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox2.Location = new System.Drawing.Point(125, 259);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(234, 23);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtResultado
             // 
@@ -77,11 +77,11 @@ namespace Mensajeria
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 407);
             this.Controls.Add(this.txtResultado);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Servicio de Notifiaciones a Soporte técnico";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -92,7 +92,7 @@ namespace Mensajeria
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtResultado;
     }
 }

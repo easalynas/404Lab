@@ -35,13 +35,14 @@ namespace Mensajeria
                channel.BasicPublish(exchange: "", routingKey: "notificaciones", basicProperties: null, body: body);
 
             }
-            
 
+            txtResultado.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ConnectionFactory factory = new ConnectionFactory();
+            textBox2.Text = "";
             // "guest"/"guest" by default, limited to localhost connections
             //factory.Host = "fish - 01.rmq.cloudamqp.com";
             factory.HostName = "fish-01.rmq.cloudamqp.com";
@@ -56,7 +57,7 @@ namespace Mensajeria
                 if (consumer != null)
                 {
                     string resultado = Encoding.UTF8.GetString(consumer.Body.ToArray());
-                    txtResultado.Text = txtResultado.Text + "\r\n" + "\n" + resultado;
+                    textBox2.Text = textBox2.Text + "\r\n" + "\n" + resultado;
                 }
             }
 
