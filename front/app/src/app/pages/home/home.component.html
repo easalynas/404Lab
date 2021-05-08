@@ -1,0 +1,110 @@
+<div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
+    <div class="card-body d-flex align-items-center p-0">
+        <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Estudiantes</h2>
+        <div class="search-form-2 ms-auto">
+            <i class="fa fa-search font-xss" aria-hidden="true"></i>
+            <input type="text" class="form-control text-grey-500 mb-0 bg-greylight theme-dark-bg border-0">
+        </div>
+        <a href="#" class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3">
+            <i class="fas fa-filter font-xss text-grey-500"></i>
+        </a>
+    </div>
+</div>
+
+<div class="row ps-2 pe-1">
+    <ng-container *ngFor="let estudiante of listaEstudiante">
+
+
+        <div class="col-md-6 col-sm-6 pe-2 ps-2">
+            <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
+                <div class="card-body position-relative h100 bg-image-cover bg-image-center bg-primary">
+                </div>
+                <div class="card-body d-block w-100 pl-10 pe-4 pb-4 pt-0 text-left position-relative">
+                    <figure class="avatar position-absolute w75 z-index-1 avatar-img-min">
+                        <img src="https://dummyimage.com/100x100/000/fff.png" alt="image" class="float-right p-1 bg-white rounded-circle w-100">
+                    </figure>
+                    <div class="clearfix"></div>
+                    <h4 class="fw-700 font-xss mt-3">{{ estudiante.nombres }}</h4>
+                    <h5 class="fw-700 font-xsss mt-2 mb-1">{{ estudiante.carrera }}</h5>
+                    <p class="fw-500 font-xssss text-grey-500 mt-0 mb-1">{{ estudiante.sede }}</p>
+                    <span class="position-absolute right-15 top-0 d-flex align-items-center">
+                        <a (click)="abrirComentario(estudiante,contenidoComentario)" class="d-lg-block ">
+                            <i class="fa fa-comment-dots btn-round-md font-md bg-success text-white">
+                            </i>
+                        </a>
+                        <a href="#" class="d-lg-block ms-1">
+                            <i class="fa fa-check btn-round-md font-md bg-success text-white" aria-hidden="true"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+    </ng-container>
+
+
+</div>
+
+<!-- Modal Comentario ... -->
+<ng-template #contenidoComentario let-modal>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Estudiante {{ inforUsuarioComentario?.nombres }} {{ inforUsuarioComentario?.apeMaterno }}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="card w-100 shadow-xss rounded-xxl border-0 ps-2 pt-2 pe-2 pb-2 mb-2">
+            <form [formGroup]="formulario">
+                <div class="card-body p-0 mt-1 position-relative">
+                    <figure class="avatar position-absolute ms-2 mt-1 top-5"><img src="https://dummyimage.com/100x100/000/fff.png" alt="image" class="shadow-sm rounded-circle w30"></figure>
+                    <textarea formControlName="comentario" #comentario class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xss text-grey-700 fw-500 border-light-md theme-dark-bg" cols="30" rows="20" placeholder="Ingresa un comentario ..."></textarea>
+                </div>
+            </form>
+            <div class="card-body p-0">
+                <a (click)="publicarComentario(inforUsuarioComentario,comentario.value)" class=" font-xssss fw-600 text-grey-700 card-body p-0 d-flex align-items-center text-uppercase"><i
+                        class="btn-round-sm font-xs text-primary feather-edit-3 me-2 bg-greylight "></i>Publicar
+                    comentario</a>
+            </div>
+            <!-- Comentarios ... -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="chat-wrapper p-0 w-100  bg-white theme-dark-bg">
+                        <div class="chat-wrapper pt-0 w-100 ">
+                            <div class="chat-body p-lg-4 p-3 mt-lg-3 mt-0">
+
+                                <div class="card dark-bg-transparent border-0 w-100 p-0 mb-0 shadow-none">
+                                    <div class="card-body p-0">
+                                        <h6 class="fw-700 text-grey-900 font-xsss mt-1">Comentarios anteriores</h6>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+                                    <!-- Lista de comentarios ... -->
+                                    <ng-container *ngFor="let comentario of listaComentarios">
+                                        <div class="panel panel-default p-0 mb-0 bg-transparent border-bottom rounded-0">
+                                            <div class="panel-collapse in">
+                                                <div class="panel-body pt-1">
+                                                    <small class="d-block">12/05/2021 17:66</small>
+                                                    <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">{{ comentario }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+                                    <!-- Lista de comentarios ... -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</ng-template>
